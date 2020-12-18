@@ -108,6 +108,7 @@ celerybeat.pid
 .env
 .venv
 .flaskenv
+
 env/
 venv/
 ENV/
@@ -140,3 +141,4 @@ cython_debug/
 
 #Pycharm
 .DS_Store
+.idea
