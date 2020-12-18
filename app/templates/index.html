@@ -16,6 +16,11 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+
+  <!-- necessary script to execute jQuery code -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+
   <!-- Vendor CSS Files -->
   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../static/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -807,10 +812,11 @@
 
       </div>
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+      <form action="/contact" id="contact-form" name="contact-form" method="POST" role="form" class="php-email-form mt-4">
+
         <div class="form-row">
           <div class="col-md-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <input type="text" name="name" id="name" class="form-control"  placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
             <div class="validate"></div>
           </div>
           <div class="col-md-6 form-group">
@@ -819,19 +825,17 @@
           </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter a subject of at least 4 characters " />
           <div class="validate"></div>
         </div>
         <div class="form-group">
-          <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+          <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="Please write something" placeholder="Message"></textarea>
           <div class="validate"></div>
         </div>
-        <div class="mb-3">
-          <div class="loading">Loading</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Your message has been sent. Thank you!</div>
+        <div class="text-center"><button type="submit" id="contact-form-button">Send Message</button></div>
+        <div id="loading" hidden="true">
+                Sending message...
         </div>
-        <div class="text-center"><button type="submit">Send Message</button></div>
       </form>
 
     </div>
@@ -858,36 +862,79 @@
 
   <!-- Template Main JS File -->
   <script src="../static/js/main.js"></script>
+  <!-- jQuery validation is not included in the script above, so needs to be explicitly included -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
-    <script>
 
-        // Quick fix to close the menu on click/tap on mobile etc
-        $(document).on('click',function(){
-            $('.collapse').collapse('hide');
-        })
 
-        // Need to stop propagation on the section or even clicking outside the text collapse is triggered
-        // But the text in the link readMore does not change
-        $("#about").click(function(e) { e.stopPropagation(); });
-        // Toggles expand/collapse in bio section
-        function changeText() {
-            var element = document.getElementById('readMore');
-            //aria-expanded is the attribute that keeps track whether a section is expanded or not
-            var isExpanded = $('#collapsedText').attr("aria-expanded");
-            if (element.innerHTML === 'THE LONG STORY...' && isExpanded==="false") {
-                $('#collapsedText').collapse('show');
-                element.innerHTML = 'READ LESS...';
+  <script>
 
+  $(document).ready(function () {
+
+    $("#contact-form").validate({
+      rules: {
+        name: {required:true, minlength:4},
+        email: {required:true, email:true},
+        subject: {required:true, minlength:4},
+        message: {required:true}
+      }
+    });
+
+  });
+
+  $('#contact-form').submit(function(e) {
+
+    e.preventDefault();
+    // todo: without this sends email twice. But before it wasn't. Investigate
+    e.stopImmediatePropagation();
+
+    if ($('#contact-form').valid()) {
+
+      $.ajax({
+            type: 'post',
+            url: '/contact',
+            data: $('#contact-form').serialize(),
+            beforeSend: function() {$("#loading").removeAttr('hidden');},
+            complete: function() {$("#loading").css('visibility', 'hidden');},
+            success: function (response) {
+              alert(response);
             }
-            else {
-                $('#collapsedText').collapse('hide');
-                element.innerHTML = 'THE LONG STORY...';
-            }
+          });
+      }
 
+    });
+
+  </script>
+
+
+  <script>
+
+    // Quick fix to close the menu on click/tap on mobile etc
+    $(document).on('click',function(){
+        $('.collapse').collapse('hide');
+    })
+
+    // Need to stop propagation on the section or even clicking outside the text collapse is triggered
+    // But the text in the link readMore does not change
+    $("#about").click(function(e) { e.stopPropagation(); });
+    // Toggles expand/collapse in bio section
+    function changeText() {
+        var element = document.getElementById('readMore');
+        //aria-expanded is the attribute that keeps track whether a section is expanded or not
+        var isExpanded = $('#collapsedText').attr("aria-expanded");
+        if (element.innerHTML === 'THE LONG STORY...' && isExpanded==="false") {
+            $('#collapsedText').collapse('show');
+            element.innerHTML = 'READ LESS...';
 
         }
+        else {
+            $('#collapsedText').collapse('hide');
+            element.innerHTML = 'THE LONG STORY...';
+        }
 
-    </script>
+      }
+
+  </script>
 
     <!-- Conference Modal Dialog -->
     <div id="conferenceModal" class="modal" style="color:black">
