@@ -32,7 +32,8 @@ def index():
 
 @app.route('/en', methods=['GET'])
 def index_en():
-
+    # TODO: have a single index page, and just fill the text with variables that have different values
+    # eg. base html ... {{ text }} ... and text is sent from backend in english or italian depending on endpoint
     return render_template('index_en.html', year=datetime.now().year)
 
 
