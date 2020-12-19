@@ -11,6 +11,18 @@ from flask import render_template, request, flash, redirect, url_for, jsonify, m
 def inject_now():
     return {'now': datetime.utcnow()}
 
+
+@app.before_request
+def before_request():
+    """
+    Redirect to https if the environment is not dev
+    """
+    if not request.is_secure and app.env != "development":
+        url = request.url.replace("http://", "https://", 1)
+        code = 301
+        return redirect(url, code=code)
+
+
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
