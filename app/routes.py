@@ -30,6 +30,12 @@ def index():
     return render_template('index.html', year=datetime.now().year)
 
 
+@app.route('/en', methods=['GET'])
+def index_en():
+
+    return render_template('index_en.html', year=datetime.now().year)
+
+
 @app.route('/contact', methods=['POST'])
 def contact():
 
@@ -49,11 +55,22 @@ def contact():
     server = smtplib.SMTP("smtp.gmail.com", port=587)
     server.starttls()
 
+    url_from = request.form['url_from']
+
     try:
         server.login(user=credentials['user'], password=credentials['pwd'])
         server.sendmail(from_addr=credentials['user'], to_addrs=target_email, msg=msg.as_string())
-        message = "Thank you! I will get back to you as soon as possible!"
+
+        # return message in ita or eng depending on the url (first simple fix)
+        if url_from.endswith("en/"):
+            message = "Thank you! I will get back to you as soon as possible!"
+        else:
+            message = "Grazie! Cercherò di risponderti il prima possibile!"
+
     except:
-        message = "An error occurred :/ Please try later or contact me via a social media."
+        if url_from.endswith("en/"):
+            message = "An error occurred :/ Please try later or contact me via a social media."
+        else:
+            message = "Si è verificato un errore :/ Per favore riprova più tardi o contattami tramite i social media."
 
     return jsonify(message)
