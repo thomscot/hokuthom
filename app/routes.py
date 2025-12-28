@@ -37,41 +37,68 @@ def index_en():
     return render_template('index_en.html', year=datetime.now().year)
 
 
+import logging
+from smtplib import SMTPAuthenticationError, SMTPException
+
 @app.route('/contact', methods=['POST'])
 def contact():
+    name = request.form.get("name", "").strip()
+    mail = request.form.get("email", "").strip()
+    subj = request.form.get("subject", "").strip()
+    message_text = request.form.get("message", "").strip()
 
-    name = request.form.get("name")
-    mail = request.form.get("email")
-    subj = request.form.get("subject")
-    body = f"From: {mail} \n\n" + request.form.get("message")
+    # IMPORTANT: this can be missing -> don't use ['url_from']
+    url_from = request.form.get("url_from", "")
+    is_en = url_from.endswith("/en") or url_from.endswith("/en/")
+
+    # Basic validation (optional but helpful)
+    if not mail or not message_text:
+        return jsonify("Missing required fields."), 400
+
+    body_text = f"From: {mail}\nName: {name}\n\n{message_text}"
 
     msg = MIMEMultipart()
-    msg['Subject'] = f"From {name}: {subj}"
+    msg["Subject"] = f"From {name}: {subj}" if name else f"Contact form: {subj}"
+    msg["From"] = os.environ.get("EMAIL")  # sender authenticated
+    msg["To"] = os.environ.get("EMAIL_TO", "")
 
-    body = MIMEText(body)
-    msg.attach(body)
+    msg.attach(MIMEText(body_text, "plain", "utf-8"))
 
-    credentials = {'user': os.environ.get("EMAIL"), 'pwd': os.environ.get("PASSWORD")}
+    smtp_user = os.environ.get("EMAIL")
+    smtp_pwd = os.environ.get("PASSWORD")
     target_email = os.environ.get("EMAIL_TO")
-    server = smtplib.SMTP("smtp.gmail.com", port=587)
-    server.starttls()
 
-    url_from = request.form['url_from']
+    # Fail fast if env vars missing (common on Heroku)
+    if not smtp_user or not smtp_pwd or not target_email:
+        app.logger.error("Missing EMAIL/PASSWORD/EMAIL_TO env vars")
+        return jsonify("Server configuration error."), 500
 
     try:
-        server.login(user=credentials['user'], password=credentials['pwd'])
-        server.sendmail(from_addr=credentials['user'], to_addrs=target_email, msg=msg.as_string())
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as server:
+            server.ehlo()
+            server.starttls()
+            server.ehlo()
+            server.login(smtp_user, smtp_pwd)
+            server.sendmail(smtp_user, [target_email], msg.as_string())
 
-        # return message in ita or eng depending on the url (first simple fix)
-        if url_from.endswith("en/"):
-            message = "Thank you! I will get back to you as soon as possible!"
-        else:
-            message = "Grazie! Cercherò di risponderti il prima possibile!"
+        ok_msg = "Thank you! I will get back to you as soon as possible!" if is_en \
+                 else "Grazie! Cercherò di risponderti il prima possibile!"
+        return jsonify(ok_msg)
 
-    except:
-        if url_from.endswith("en/"):
-            message = "An error occurred :/ Please try later or contact me via a social media."
-        else:
-            message = "Si è verificato un errore :/ Per favore riprova più tardi o contattami tramite i social media."
+    except SMTPAuthenticationError as e:
+        app.logger.exception("SMTP auth failed (Gmail). Likely need an App Password.")
+        err_msg = "Email auth error. Please contact me via social media." if is_en \
+                  else "Errore di autenticazione email. Contattami via social."
+        return jsonify(err_msg), 500
 
-    return jsonify(message)
+    except SMTPException as e:
+        app.logger.exception("SMTP error while sending email")
+        err_msg = "An error occurred :/ Please try later or contact me via social media." if is_en \
+                  else "Si è verificato un errore :/ Riprova più tardi o contattami tramite i social."
+        return jsonify(err_msg), 500
+
+    except Exception as e:
+        app.logger.exception("Unexpected error in /contact")
+        err_msg = "An error occurred :/ Please try later or contact me via social media." if is_en \
+                  else "Si è verificato un errore :/ Riprova più tardi o contattami tramite i social."
+        return jsonify(err_msg), 500
