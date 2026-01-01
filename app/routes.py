@@ -1,10 +1,14 @@
 import os
 import smtplib
+import time
+
 from app import app
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from flask import render_template, request, flash, redirect, url_for, jsonify, make_response
+from flask import render_template, request, redirect, jsonify
+from smtplib import SMTPAuthenticationError, SMTPException
+
 
 
 @app.context_processor
@@ -51,6 +55,23 @@ def contact():
     url_from = request.form.get("url_from", "")
     is_en = url_from.endswith("/en") or url_from.endswith("/en/")
 
+    # --- Anti-spam: honeypot ---
+    # If this hidden field is filled, it's very likely a bot.
+    if request.form.get("company", "").strip():
+        return jsonify("Thank you!"), 200
+
+    # --- Anti-spam: time trap ---
+    # Bots often submit instantly. Humans usually take a few seconds.
+    ts = request.form.get("ts", "")
+    try:
+        ts = int(ts) / 1000.0
+    except Exception:
+        ts = None
+
+    # If missing/invalid timestamp OR submitted too fast (< 3 seconds), treat as bot
+    if not ts or (time.time() - ts) < 3:
+        return jsonify("Thank you!"), 200
+
     # Basic validation (optional but helpful)
     if not mail or not message_text:
         return jsonify("Missing required fields."), 400
@@ -85,19 +106,19 @@ def contact():
                  else "Grazie! Cercherò di risponderti il prima possibile!"
         return jsonify(ok_msg)
 
-    except SMTPAuthenticationError as e:
+    except SMTPAuthenticationError:
         app.logger.exception("SMTP auth failed (Gmail). Likely need an App Password.")
         err_msg = "Email auth error. Please contact me via social media." if is_en \
                   else "Errore di autenticazione email. Contattami via social."
         return jsonify(err_msg), 500
 
-    except SMTPException as e:
+    except SMTPException:
         app.logger.exception("SMTP error while sending email")
         err_msg = "An error occurred :/ Please try later or contact me via social media." if is_en \
                   else "Si è verificato un errore :/ Riprova più tardi o contattami tramite i social."
         return jsonify(err_msg), 500
 
-    except Exception as e:
+    except Exception:
         app.logger.exception("Unexpected error in /contact")
         err_msg = "An error occurred :/ Please try later or contact me via social media." if is_en \
                   else "Si è verificato un errore :/ Riprova più tardi o contattami tramite i social."

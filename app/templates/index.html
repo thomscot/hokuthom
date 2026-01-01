@@ -835,69 +835,95 @@
 
   </section><!-- End Portfolio Section -->
 
-  <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container">
+ <!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
 
-      <div class="section-title">
-        <h2>Contatti</h2>
-        <p>Contattami</p>
+    <div class="section-title">
+      <h2>Contatti</h2>
+      <p>Contattami</p>
+    </div>
+
+    <div class="row mt-2">
+
+      <div class="col-md-6 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="bx bx-map"></i>
+          <h3>Il mio indirizzo</h3>
+          <p>Da qualche parte nella prefettura di Kanagawa, Giappone</p>
+        </div>
       </div>
 
-      <div class="row mt-2">
-
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-map"></i>
-            <h3>Il mio indirizzo</h3>
-            <p>Da qualche parte nella prefettura di Kanagawa, Giappone</p>
+      <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="bx bx-share-alt"></i>
+          <h3>Profili Social</h3>
+          <div class="social-links">
+            <a href="https://twitter.com/hokuthom" target="_blank" class="twitter"><i class="icofont-twitter"></i></a>
+            <a href="https://www.facebook.com/hokuthom" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
+            <a href="https://www.instagram.com/hokuthom/" target="_blank" class="instagram"><i class="icofont-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/tommasoscotti/" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></a>
           </div>
         </div>
-
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-share-alt"></i>
-            <h3>Profili Social</h3>
-            <div class="social-links">
-              <a href="https://twitter.com/hokuthom" target="_blank" class="twitter"><i class="icofont-twitter"></i></a>
-              <a href="https://www.facebook.com/hokuthom" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
-              <a href="https://www.instagram.com/hokuthom/" target="_blank" class="instagram"><i class="icofont-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/tommasoscotti/" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <form action="/contact" id="contact-form" name="contact-form" method="POST" role="form" class="php-email-form mt-4">
-
-        <div class="form-row">
-          <div class="col-md-6 form-group">
-            <input type="text" name="name" id="name" class="form-control"  placeholder="Il tuo nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-6 form-group">
-            <input type="email" class="form-control" name="email" id="email" placeholder="La tua email" data-rule="email" data-msg="Please enter a valid email" />
-            <div class="validate"></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Oggetto" data-rule="minlen:4" data-msg="Please enter a subject of at least 4 characters " />
-          <div class="validate"></div>
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="Please write something" placeholder="Scrivi qualcosa qui"></textarea>
-          <div class="validate"></div>
-        </div>
-        <div hidden="true"> <input type="text" id="url_from" name="url_from" value= {{request.url}}/></div>
-        <div class="text-center"><button type="submit" id="contact-form-button">Invia Messaggio</button></div>
-        <div id="loading" hidden="true">
-                Sto inviando il messaggio...
-        </div>
-      </form>
 
     </div>
-  </section><!-- End Contact Section -->
+
+    <form action="/contact" id="contact-form" name="contact-form" method="POST" role="form" class="php-email-form mt-4">
+
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <input type="text" name="name" id="name" class="form-control" placeholder="Il tuo nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+          <div class="validate"></div>
+        </div>
+        <div class="col-md-6 form-group">
+          <input type="email" class="form-control" name="email" id="email" placeholder="La tua email" data-rule="email" data-msg="Please enter a valid email" />
+          <div class="validate"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="Oggetto" data-rule="minlen:4" data-msg="Please enter a subject of at least 4 characters " />
+        <div class="validate"></div>
+      </div>
+
+      <div class="form-group">
+        <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="Please write something" placeholder="Scrivi qualcosa qui"></textarea>
+        <div class="validate"></div>
+      </div>
+
+      <!-- Existing hidden field (kept as-is, but made robust with quotes) -->
+      <div hidden="true">
+        <input type="text" id="url_from" name="url_from" value="{{ request.url }}"/>
+      </div>
+
+      <!-- Anti-spam: honeypot (bots often fill; humans won't see) -->
+      <div style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">
+        <label for="company">Company</label>
+        <input type="text" name="company" id="company" autocomplete="off" tabindex="-1">
+      </div>
+
+      <!-- Anti-spam: time trap -->
+      <input type="hidden" name="ts" id="ts" value="">
+      <script>
+        (function () {
+          var el = document.getElementById("ts");
+          if (el) el.value = Date.now().toString();
+        })();
+      </script>
+
+      <div class="text-center">
+        <button type="submit" id="contact-form-button">Invia Messaggio</button>
+      </div>
+
+      <div id="loading" hidden="true">
+        Sto inviando il messaggio...
+      </div>
+
+    </form>
+
+  </div>
+</section><!-- End Contact Section -->
 
   <div class="credits">
     <!-- All the links in the footer should remain intact. -->
