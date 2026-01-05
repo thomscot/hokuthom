@@ -1212,3 +1212,21 @@ section .container {
   margin-left: 2px;
   font-size: 0.9em;
 }
+
+/* ===== Header overlay for readability ===== */
+#header {
+  position: relative;
+}
+
+#header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.10); /* regola tra 0.30 e 0.40 */
+  z-index: 1;
+}
+
+#header .container {
+  position: relative;
+  z-index: 2;
+}
