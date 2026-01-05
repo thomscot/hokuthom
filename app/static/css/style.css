@@ -1199,3 +1199,16 @@ section .container {
 .credits a:hover {
   color: #fff;
 }
+
+/* forza inline, perché spesso il tema mette display:block */
+.count-box .counter-up {
+  display: inline-block !important;
+  white-space: nowrap;
+}
+
+/* aggiunge il + senza toccare il numero (il plugin vede solo "10") */
+.count-box .counter-up.plus::after {
+  content: "+";
+  margin-left: 2px;
+  font-size: 0.9em;
+}
