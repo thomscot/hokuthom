@@ -1,6 +1,7 @@
 import os
 import smtplib
 import time
+import logging
 
 from app import app
 from datetime import date, datetime
@@ -9,6 +10,18 @@ from email.mime.multipart import MIMEMultipart
 from flask import render_template, request, redirect, jsonify
 from smtplib import SMTPAuthenticationError, SMTPException
 from typing import Optional
+
+
+IN_JAPAN_SINCE = date(2012, 3, 28)     
+WRITING_SINCE = date(2021, 1, 7)
+BIRTHDATE = date(1984, 3, 12)
+
+def full_years_since(start_date: date, today: Optional[date] = None) -> int:
+    today = today or date.today()
+    years = today.year - start_date.year
+    if (today.month, today.day) < (start_date.month, start_date.day):
+        years -= 1
+    return max(0, years)
 
 
 def calc_age(birthdate: date, today: Optional[date] = None) -> int:
@@ -96,10 +109,7 @@ def get_translations(lang: str) -> dict:
 
             "read_more": "LA STORIA LUNGA...",
             "read_less": "NASCONDI",
-
-            "count_years_in_japan_value": "10",
             "count_years_in_japan_label": "Anni in Giappone",
-            "count_cultural_years_value": "5",
             "count_cultural_years_label": "Anni di attività culturale",
             "count_novels_value": "4",
             "count_novels_label": "Romanzi",
@@ -210,7 +220,7 @@ def get_translations(lang: str) -> dict:
 
             "about_info_title": "Info",
             "about_info_subtitle": "In a nutshell...",
-            "about_headline": "An Italian writer in Japan",
+            "about_headline": "Italian author in Japan",
             "about_tagline": "A non-linear trajectory across scientific research, technology, and culture.",
             "label_birthdate": "Date of birth:",
             "value_birthdate": "March 12, 1984",
@@ -249,9 +259,7 @@ def get_translations(lang: str) -> dict:
             "read_more": "THE LONG STORY...",
             "read_less": "READ LESS...",
 
-            "count_years_in_japan_value": "10",
             "count_years_in_japan_label": "Years in Japan",
-            "count_cultural_years_value": "5",
             "count_cultural_years_label": "Years of cultural activity",
             "count_novels_value": "4",
             "count_novels_label": "Novels",
@@ -395,9 +403,7 @@ def get_translations(lang: str) -> dict:
             "read_more": "ロングストーリー…",
             "read_less": "閉じる",
 
-            "count_years_in_japan_value": "10",
             "count_years_in_japan_label": "日本での年数",
-            "count_cultural_years_value": "5",
             "count_cultural_years_label": "文化活動の年数",
             "count_novels_value": "4",
             "count_novels_label": "小説",
@@ -492,12 +498,17 @@ def get_translations(lang: str) -> dict:
 
 
 def render_index(lang: str):
-    birthdate = date(1984, 3, 12)
-    age = calc_age(birthdate)
+
+    age = calc_age(BIRTHDATE)
+    today = date.today()
+    count_years_in_japan_value = full_years_since(IN_JAPAN_SINCE, today=today)
+    count_cultural_years_value = full_years_since(WRITING_SINCE, today=today)
 
     return render_template(
         "index.html",
         year=datetime.now().year,
+        count_years_in_japan_value=count_years_in_japan_value,
+        count_cultural_years_value=count_cultural_years_value,
         age=age,
         lang=lang,
         t=get_translations(lang),
@@ -520,8 +531,7 @@ def index_jp():
     return render_index("jp")
 
 
-import logging
-from smtplib import SMTPAuthenticationError, SMTPException
+
 
 
 @app.route("/contact", methods=["POST"])
