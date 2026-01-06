@@ -408,7 +408,7 @@ def get_translations(lang: str) -> dict:
             "writing_subtitle": "書籍",
             "book1_desc": "表層はクライムフィクション、内側は現代日本の肖像。",
             "book2_desc": "『皇帝の傘』の続編：西田警部の二つ目の事件。",
-            "book3_desc": "日系アメリカ人捜査官・西田武志ジェームズ、三度目の冒険。",
+            "book3_desc": "日系アメリカ人捜査官・西田警部の三度目の冒険。",
             "book4_desc": "1968年「三億円事件」を題材にした小説。",
 
             "cultural_title": "文化活動",
@@ -494,7 +494,7 @@ def get_translations(lang: str) -> dict:
 def render_index(lang: str):
     birthdate = date(1984, 3, 12)
     age = calc_age(birthdate)
-    
+
     return render_template(
         "index.html",
         year=datetime.now().year,
