@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ t.html_lang }}">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Tommaso Scotti</title>
-  <meta content="{{ t.meta_description }}" name="description">
+  <meta content="Writer, Developer, and a bunch of other things" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -45,24 +45,24 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header-tops">
     <div class="container">
-      <h1><a href="{{ url_for('index') }}">{{ t.site_name | safe }}</a></h1>
+      <h1><a href="{{ url_for('index') }}">Tommaso Scotti</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
        <!--<a href="index.html" class="mr-auto"><img src="../static/img/logo.png" alt="" class="img-fluid"></a>-->
-      <h2>{{ t.header_motto | safe }}</h2>
+      <h2>斗 Scrittore 武</h2>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#header">{{ t.nav_home }}</a></li>
-          <li><a href="#about">{{ t.nav_about }}</a></li>
-          {# comment out cv for now
-          <li><a href="#resume">{{ t.nav_cv }}</a></li>
+          <li class="active"><a href="#header">Home</a></li>
+          <li><a href="#about">Chi sono</a></li>
+          {# comment out cv for now 
+          <li><a href="#resume">CV</a></li>
           #}
-          <li><a href="#writing">{{ t.nav_writing }}</a></li>
-           {# comment out photography for now
-          <li><a href="#portfolio">{{ t.nav_photography }}</a></li>
+          <li><a href="#writing">Scrittura</a></li>
+           {# comment out photography for now 
+          <li><a href="#portfolio">Fotografia</a></li>
           #}
-          <li><a href="#cultural">{{ t.nav_cultural }}</a></li>
-          <li><a href="#contact">{{ t.nav_contact }}</a></li>
+          <li><a href="#cultural">Attività culturali</a></li>
+          <li><a href="#contact">Contatti</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -71,12 +71,9 @@
         <a href="https://www.facebook.com/hokuthom" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
         <a href="https://www.instagram.com/hokuthom/" target="_blank" class="instagram"><i class="icofont-instagram"></i></a>
         <a href="https://www.linkedin.com/in/tommasoscotti/" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></a>
-
-        <!-- Language switchers (kept the existing EN flag behavior, added JP + IT) -->
-        <a href="{{ url_for('index') }}" title="Italiano" style="background-image:url('../static/img/ita.png');background-size: contain;background-repeat: no-repeat; background-position: center center;"></a>
-        <a href="{{ url_for('index_en') }}" title="English" style="background-image:url('../static/img/en.png');background-size: contain;background-repeat: no-repeat; background-position: center center;"></a>
-        <a href="{{ url_for('index_jp') }}" title="日本語" style="background-image:url('../static/img/jp.png');background-size: contain;background-repeat: no-repeat; background-position: center center;"></a>
+        <a href="{{ url_for('index_en') }}" style="background-image:url('../static/img/en.png');background-size: contain;background-repeat: no-repeat; background-position: center center;"></a>
       </div>
+
 
     </div>
   </header><!-- End Header -->
@@ -88,8 +85,8 @@
     <div class="about-me container">
 
       <div class="section-title">
-        <h2>{{ t.about_info_title }}</h2>
-        <p>{{ t.about_info_subtitle }}</p>
+        <h2>Informazioni</h2>
+        <p>In due parole... </p>
       </div>
 
       <div class="row">
@@ -97,36 +94,57 @@
           <img src="../static/img/me.jpg" class="img-fluid" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-          <h3>{{ t.about_headline }}</h3>
+          <h3>Scrittore italiano in Giappone</h3>
           <p class="font-italic">
-            {{ t.about_tagline }}
+            Una traiettoria non lineare tra ricerca scientifica, tecnologia e cultura.
           </p>
           <div class="row">
             <div class="col-lg-6">
               <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>{{ t.label_birthdate }}</strong> {{ t.value_birthdate }}</li>
-                <li><i class="icofont-rounded-right"></i> <strong>{{ t.label_website }}</strong> www.tommasoscotti.com</li>
+                <li><i class="icofont-rounded-right"></i> <strong>Data di nascita:</strong> 12 Marzo 1984</li>
+                <li><i class="icofont-rounded-right"></i> <strong>Sito web:</strong> www.tommasoscotti.com</li>
               </ul>
             </div>
             <div class="col-lg-6">
               <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>{{ t.label_age }}</strong> {{ age }} </li>
-                <li><i class="icofont-rounded-right"></i> <strong>{{ t.label_education }}</strong> {{ t.value_education }}</li>
+                <li><i class="icofont-rounded-right"></i> <strong>Età:</strong> {{ year - 1984 }}</li>
+                <li><i class="icofont-rounded-right"></i> <strong>Educazione:</strong> Dottorato (matematica)</li>
               </ul>
             </div>
           </div>
 
-          {{ t.short_story_label }}
+          LA STORIA BREVE
           </br> </br>
           <p style="text-align: justify;">
-            {{ t.short_story_paragraph|safe }}
+            Sono nato a Roma ma vivo e lavoro in Giappone dal 2012. Ho conseguito un dottorato in matematica applicata a Tokyo nel 2015,
+            a seguito del quale ho iniziato a lavorare nell'ambiente delle tecnologie finanziarie e pubblicitarie. Mi piace anche scrivere,
+            e nel 2021 ho pubblicato il mio primo romanzo <em>L'Ombrello dell'Imperatore</em> (Longanesi).
+            Suono il pianoforte fin da bambino, e pratico arti marziali dalla fine degli anni 90. Nel tempo libero mi dedico alla calligrafia,
+            giro in moto, scrivo, leggo, programmo, faccio foto e probabilmente ho dimenticato qualcosa.
+
           </p>
 
           <p id="collapsedText" class="collapse text-faded" style="text-align: justify;" aria-expanded="false" onclick="changeText()">
-            {{ t.long_story_paragraph|safe }}
-          </p>
 
-          <p><a id="readMore" aria-expanded="false" style="color:#FFFFFF; cursor:pointer;" onclick="changeText()">{{ t.read_more }}</a></p>
+             Sono nato e cresciuto a Roma, città che ho abitato per i primi vent’anni della mia vita, oscillando tra una precoce passione per la musica e lo sport e una costante attenzione allo studio, accuratamente sorvegliata in ambito familiare. 
+  
+            È stato però durante l’estate del 2007, visitando un amico in Erasmus in Spagna, che ho scoperto come l’espressione “studio all’estero” possa talvolta avere contorni sorprendentemente elastici. Avendo quasi concluso una laurea specialistica in matematica, decisi che avrei voluto sperimentare anch’io quella forma di “studio”.
+            </br></br>
+            La Spagna, tuttavia, non mi sembrava sufficientemente distante – almeno in senso caratteriale. Scelsi quindi la Finlandia, e nel gennaio del 2008 mi trasferii per un semestre all’Università di Oulu, a pochi chilometri dal Circolo Polare Artico. Fu un’esperienza formativa sotto molti aspetti: non solo per l’approfondimento accademico, ma anche perché imparai cosa significhi vivere in un contesto radicalmente diverso, confrontarsi con nuove lingue e nuove abitudini, e sviluppare una prima, concreta autonomia personale. La Finlandia rappresentò un primo passo, ma non certo l’ultimo.
+             </br></br>
+            Conclusa la laurea nel 2009, decisi di prendermi una pausa dagli studi per seguire un’altra mia passione di lunga data: le arti marziali. Con oltre dieci anni di pratica alle spalle e una conoscenza di base del cinese, mi trasferii a Pechino. L’impatto fu tutt’altro che semplice: lo shock culturale fu notevole e i primi mesi richiesero una buona dose di adattamento e perseveranza. Superata la fase iniziale, tuttavia, la Cina si rivelò un’esperienza straordinaria, fatta di incontri, musica, pratica marziale e contatti con ambienti culturali molto diversi tra loro, che contribuirono in modo decisivo ad ampliare il mio sguardo sul mondo.
+            </br></br>
+            Fu proprio durante il soggiorno in Cina che visitai per la prima volta il Giappone. Bastarono pochi giorni per capire che quel Paese avrebbe avuto un ruolo centrale nel mio futuro. Nel 2010 mi trasferii a Tokyo con l’idea di fermarmi più a lungo, pur senza parlare giapponese e senza una reale esperienza professionale. L’esito fu, prevedibilmente, incerto: dopo alcuni mesi dovetti rientrare in Italia. L’idea di rinunciare, però, non prese mai realmente forma. Decisi quindi di ripercorrere la via accademica e, dopo un lungo periodo di candidature e procedure, nel 2012 ottenni una borsa di studio che mi permise di trasferirmi definitivamente a Tokyo, dove vivo tuttora.
+           </br></br>
+             Nel 2015 ho conseguito un dottorato in matematica applicata, svolgendo attività di ricerca nel campo delle equazioni di reazione-diffusione. Al termine del percorso accademico ho intrapreso una carriera professionale nel settore delle tecnologie finanziarie e, successivamente, in quello delle tecnologie pubblicitarie, lavorando in contesti internazionali e altamente interdisciplinari. Questo percorso mi ha portato gradualmente dalla matematica teorica alla programmazione e all’analisi dei dati, consentendomi di sviluppare competenze organizzative, progettuali e di coordinamento in ambienti complessi.
+            </br></br>
+             Parallelamente, ho sempre coltivato un impegno costante nelle arti e nella cultura. Suono il pianoforte fin dall’infanzia, pratico arti marziali dalla fine degli anni Novanta e mi dedico da anni allo studio e alla pratica della calligrafia giapponese (shodō), come forma di approfondimento linguistico ed estetico della cultura nipponica. Nel 2021 ho pubblicato il mio primo romanzo, L’ombrello dell’Imperatore (Longanesi), cui sono seguite altre opere narrative ambientate in Giappone. Attraverso la scrittura svolgo un’attività di divulgazione culturale rivolta al pubblico italiano, con l’intento di raccontare il Giappone contemporaneo nelle sue sfumature, lontano da semplificazioni e stereotipi.
+            </br></br>
+             Guardando a ritroso, il mio percorso si è sviluppato lungo una traiettoria non lineare, ma coerente: dalla formazione scientifica alla produzione culturale, passando per una lunga esperienza di vita e lavoro in Giappone. Vivere stabilmente nel Paese dal 2012 mi ha permesso di comprenderne dall’interno i codici culturali, le istituzioni e le dinamiche sociali, costruendo nel tempo un rapporto profondo e quotidiano con il contesto giapponese. Ritengo che questa combinazione di esperienza accademica, professionale e culturale possa costituire una base solida per contribuire, con consapevolezza e spirito di servizio, alla promozione della cultura italiana e al rafforzamento del dialogo culturale tra Italia e Giappone.
+
+
+          </p>
+        <p><a id="readMore" aria-expanded="false" style="color:#FFFFFF; cursor:pointer;" onclick="changeText()">THE LONG STORY...</a></p>
         </div>
       </div>
 
@@ -140,32 +158,32 @@
         <div class="col-lg-3 col-md-6">
           <div class="count-box">
             <i class="icofont-world"></i>
-            <span class="counter-up plus" data-toggle="counter-up">{{ t.count_years_in_japan_value }}</span>
-            <p>{{ t.count_years_in_japan_label }}</p>
+          <span class="counter-up plus" data-toggle="counter-up">10</span>
+          <p>Anni in Giappone</p>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
           <div class="count-box">
             <i class="icofont-pen-alt-4"></i>
-            <span class="counter-up plus" data-toggle="counter-up">{{ t.count_cultural_years_value }}</span>
-            <p>{{ t.count_cultural_years_label }}</p>
+            <span class="counter-up plus" data-toggle="counter-up">5</span>
+            <p>Anni di attività culturale</p>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
           <div class="count-box">
             <i class="icofont-book"></i>
-            <span data-toggle="counter-up">{{ t.count_novels_value }}</span>
-            <p>{{ t.count_novels_label }}</p>
+            <span data-toggle="counter-up">4</span>
+            <p>Romanzi</p>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
           <div class="count-box">
             <i class="icofont-graduate-alt"></i>
-            <span data-toggle="counter-up">{{ t.count_papers_value }}</span>
-            <p>{{ t.count_papers_label }}</p>
+            <span data-toggle="counter-up">2</span>
+            <p>Articoli scientifici</p>
           </div>
         </div>
 
@@ -175,7 +193,7 @@
 
     {# comment out all next sections for now #}
 
-    {#
+    {# 
 
     <!-- ======= Skills  ======= -->
     <div class="skills container">
@@ -495,8 +513,8 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>{{ t.writing_title }}</h2>
-        <p>{{ t.writing_subtitle }}</p>
+        <h2>Scrittura</h2>
+        <p>I miei libri</p>
       </div>
 
       <div class="row">
@@ -506,7 +524,7 @@
 
           <div class="icon-box">
               <img src="../static/img/ombrello.jpg" class="img-fluid" alt="ombrello">
-            <p>{{ t.book1_desc }}</p>
+            <p>Una crime fiction all'esterno, un ritratto del Giappone moderno all'interno.</p>
           </div>
         </a>
         </div>
@@ -515,7 +533,7 @@
           <a style="display:block" href="https://www.illibraio.it/libri/tommaso-scotti-le-due-morti-del-signor-mihara-9788830459168/" target="_blank">
             <div class="icon-box">
                 <img src="../static/img/mihara.jpeg" class="img-fluid" alt="mihara">
-              <p>{{ t.book2_desc }}</p>
+              <p>Il seguito de L'ombrello dell'imperatore: seconda indagine per l'ispettore Nishida.</p>
             </div>
           </a>
         </div>
@@ -524,7 +542,7 @@
           <a style="display:block" href="https://www.maurispagnol.it/en/book/tommaso-scotti-i-diavoli-di-tokyo-ovest-9788830460836/ns/" target="_blank">
             <div class="icon-box">
                 <img src="../static/img/devils.jpg" class="img-fluid" alt="mihara">
-              <p>{{ t.book3_desc }}</p>
+              <p>Una terza avvetura per l'ispettore nippo-americano Takeshi James Nishida.</p>
             </div>
           </a>
         </div>
@@ -533,10 +551,11 @@
           <a style="display:block" href=https://www.illibraio.it/libri/tommaso-scotti-il-segreto-del-vecchio-signor-nakamura-9788830462144/" target="_blank">
             <div class="icon-box">
                 <img src="../static/img/nakamura.jpg" class="img-fluid" alt="mihara">
-              <p>{{ t.book4_desc }}</p>
+              <p>Romanzo basato sul celebre furto dei 300 milioni di yen del 1968.</p>
             </div>
           </a>
         </div>
+
 
       </div>
 
@@ -544,7 +563,7 @@
 
   </section><!-- End Writing Section -->
 
-  {# comment out photography for now
+  {# comment out photography for now 
 
   <!-- ======= Portfolio Section ======= -->
   <section id="portfolio" class="portfolio">
@@ -556,7 +575,284 @@
       </div>
       <p> <a href="https://www.instagram.com/hokuthom/" target="_blank" class="instagram">Guarda il mio Instagram <i class="icofont-instagram"></i></a></p>
 
-      ...
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-nature">Nature</li>
+            <li data-filter=".filter-urban">Urban</li>
+            <li data-filter=".filter-people">People</li>
+            <li data-filter=".filter-bw">B&W</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+
+        <div class="col-lg-12 col-md-6 portfolio-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/nature/fuji.jpg" class="img-fluid" alt="fuji">
+            <div class="portfolio-info">
+              <h4>Fujiyama</h4>
+              <p>Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/nature/fuji.jpg" data-gall="portfolioGallery" class="venobox" title="Fujiyama"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/nature/primavera2.jpg" class="img-fluid" alt="primavera">
+            <div class="portfolio-info">
+              <h4>Spring</h4>
+              <p>Tokyo, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/nature/primavera2.jpg" data-gall="portfolioGallery" class="venobox" title="Spring"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-people">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/sleepers2.jpg" class="img-fluid" alt="sleepers2">
+            <div class="portfolio-info">
+              <h4>Dream Train</h4>
+              <p>Tokyo, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/sleepers2.jpg" data-gall="portfolioGallery" class="venobox" title="Dream Train"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/roppongi.jpg" class="img-fluid" alt="roppongi">
+            <div class="portfolio-info">
+              <h4>Mystery</h4>
+              <p>Roppongi, Tokyo</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/roppongi.jpg" data-gall="portfolioGallery" class="venobox" title="Roppongi"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio//urban/winter.jpg" class="img-fluid" alt="winter">
+            <div class="portfolio-info">
+              <h4>Winter</h4>
+              <p>Tokyo, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/winter.jpg" data-gall="portfolioGallery" class="venobox" title="Winter"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/nature/estate.jpg" class="img-fluid" alt="estate">
+            <div class="portfolio-info">
+              <h4>Summer</h4>
+              <p>Kanagawa, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/nature/estate.jpg" data-gall="portfolioGallery" class="venobox" title="Summer"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/nature/mare.jpg" class="img-fluid" alt="mare">
+            <div class="portfolio-info">
+              <h4>The Blue</h4>
+              <p>Kanagawa, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/nature/mare.jpg" data-gall="portfolioGallery" class="venobox" title="The blue"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/nature/autunno2.jpg" class="img-fluid" alt="autumn">
+            <div class="portfolio-info">
+              <h4>Autumn</h4>
+              <p>Hakone, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/nature/autunno2.jpg" data-gall="portfolioGallery" class="venobox" title="Autumn"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-bw">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio//urban/bow.jpg" class="img-fluid" alt="bow">
+            <div class="portfolio-info">
+              <h4>Take a bow</h4>
+              <p>Kyoto, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio//urban/bow.jpg" data-gall="portfolioGallery" class="venobox" title="Take a Bow"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/hopper.jpg" class="img-fluid" alt="hopper">
+            <div class="portfolio-info">
+              <h4>Omaggio a Hopper</h4>
+              <p>Sapporo, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/hopper.jpg" data-gall="portfolioGallery" class="venobox" title="Omaggio a Hopper"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/reflections.jpg" class="img-fluid" alt="reflections">
+            <div class="portfolio-info">
+              <h4>Reflections</h4>
+              <p>Tokyo, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/reflections.jpg" data-gall="portfolioGallery" class="venobox" title="Reflections"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+         </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/redlights.jpeg" class="img-fluid" alt="redlights">
+            <div class="portfolio-info">
+              <h4>Red lights</h4>
+              <p>Fujisawa, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/redlights.jpeg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/moon.jpg" class="img-fluid" alt="moon">
+            <div class="portfolio-info">
+              <h4>Solitary moon</h4>
+              <p>Fujisawa, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/moon.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/nightwalk.jpeg" class="img-fluid" alt="nightwalk">
+            <div class="portfolio-info">
+              <h4>The way home</h4>
+              <p>Fujisawa, Japan</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/nightwalk.jpeg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/dots_lines.jpg" class="img-fluid" alt="lines">
+            <div class="portfolio-info">
+              <h4>Dots & Lines</h4>
+              <p>Roppongi, Tokyo</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/dots_lines.jpg" data-gall="portfolioGallery" class="venobox" title="Dots & Lines"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+        <div class="portfolio-wrap">
+          <img src="../static/img/portfolio/urban/commuting.jpg" class="img-fluid" alt="commuting">
+          <div class="portfolio-info">
+            <h4>Happiness?</h4>
+            <p>Tokyo, Japan</p>
+            <div class="portfolio-links">
+              <a href="../static/img/portfolio/urban/commuting.jpg" data-gall="portfolioGallery" class="venobox" title="Commuting"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+          <div class="portfolio-wrap">
+            <img src="../static/img/portfolio/urban/rain.jpg" class="img-fluid" alt="rain">
+            <div class="portfolio-info">
+              <h4>A date in the rain</h4>
+              <p>Shinjuku, Tokyo</p>
+              <div class="portfolio-links">
+                <a href="../static/img/portfolio/urban/rain.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+        <div class="portfolio-wrap">
+          <img src="../static/img/portfolio/urban/windows.jpg" class="img-fluid" alt="windows">
+          <div class="portfolio-info">
+            <h4>Windows</h4>
+            <p>Fujisawa, Japan</p>
+            <div class="portfolio-links">
+              <a href="../static/img/portfolio/urban/windows.jpg" data-gall="portfolioGallery" class="venobox" title="Windows"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-urban">
+        <div class="portfolio-wrap">
+          <img src="../static/img/portfolio/urban/heartcity2.jpg" class="img-fluid" alt="heartcity">
+          <div class="portfolio-info">
+            <h4>The heart of town</h4>
+            <p>Tokyo, Japan</p>
+            <div class="portfolio-links">
+              <a href="../static/img/portfolio/urban/heartcity2.jpg" data-gall="portfolioGallery" class="venobox" title="The heart of town"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-bw">
+        <div class="portfolio-wrap">
+          <img src="../static/img/portfolio/urban/snowfight.jpg" class="img-fluid" alt="snowfight">
+          <div class="portfolio-info">
+            <h4>Snow fight</h4>
+            <p>Tokyo, Japan</p>
+            <div class="portfolio-links">
+              <a href="../static/img/portfolio/urban/snowfight.jpg" data-gall="portfolioGallery" class="venobox" title="Snow fight"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- End Portfolio Section -->
+
   #}
 
   <!-- ======= Cultural Activities Section ======= -->
@@ -565,8 +861,8 @@
   <div class="container">
 
     <div class="section-title">
-      <h2>{{ t.cultural_title }}</h2>
-      <p>{{ t.cultural_subtitle }}</p>
+      <h2>Attività culturali</h2>
+      <p>Scrittura, divulgazione e impegno culturale</p>
     </div>
 
     <div class="row">
@@ -574,32 +870,49 @@
       <div class="col-lg-6 col-md-6 d-flex align-items-stretch">
         <div class="icon-box">
           <div class="icon"><i class="icofont-book"></i></div>
-          <h4>{{ t.cultural_box1_title }}</h4>
-          <p>{{ t.cultural_box1_text }}</p>
+          <h4>Produzione letteraria</h4>
+          <p>
+            Autore di romanzi di narrativa ambientati nel Giappone contemporaneo e pubblicati
+            da un importante editore italiano. Attraverso la scrittura affronto temi sociali, culturali
+            e storici della società giapponese contemporanea.
+          </p>
         </div>
       </div>
 
       <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
         <div class="icon-box">
           <div class="icon"><i class="icofont-pen-alt-4"></i></div>
-          <h4>{{ t.cultural_box2_title }}</h4>
-          <p>{{ t.cultural_box2_text }}</p>
+          <h4>Divulgazione culturale</h4>
+          <p>
+            Attività continuativa di divulgazione rivolta al pubblico italiano, finalizzata a raccontare
+            il Giappone al di là di stereotipi e semplificazioni, attraverso scrittura, incontri pubblici, social media
+            e attività editoriali.
+          </p>
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
-        <div class="icon-box">
-          <div class="icon"><i class="icofont-brush"></i></div>
-          <h4>{{ t.cultural_box3_title }}</h4>
-          <p>{{ t.cultural_box3_text }}</p>
-        </div>
+    <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
+      <div class="icon-box">
+        <div class="icon"><i class="icofont-brush"></i></div>
+        <h4>Pratiche artistiche</h4>
+        <p>
+          Impegno continuativo in ambiti artistici e disciplinari come strumenti di comprensione
+          culturale: arti marziali (con particolare riferimento al kendō in Giappone), calligrafia
+          giapponese (shodō, membro dell’associazione Shodan-in dal 2017) e pianoforte, che studio e
+          suono da oltre trent’anni.
+        </p>
       </div>
+    </div>
 
       <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">
         <div class="icon-box">
           <div class="icon"><i class="icofont-world"></i></div>
-          <h4>{{ t.cultural_box4_title }}</h4>
-          <p>{{ t.cultural_box4_text }}</p>
+          <h4>Esperienza interculturale</h4>
+          <p>
+            Oltre dieci anni di vita e lavoro in Giappone, maturati in contesti professionali e culturali
+            internazionali, con un coinvolgimento quotidiano nelle dinamiche istituzionali, sociali
+            e culturali del Paese.
+          </p>
         </div>
       </div>
 
@@ -616,8 +929,8 @@
   <div class="container">
 
     <div class="section-title">
-      <h2>{{ t.contact_title }}</h2>
-      <p>{{ t.contact_subtitle }}</p>
+      <h2>Contatti</h2>
+      <p>Contattami</p>
     </div>
 
     <div class="row mt-2">
@@ -625,7 +938,7 @@
       <div class="col-md-6 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-map"></i>
-          <h3>{{ t.contact_address_title }}</h3>
+          <h3>Il mio indirizzo</h3>
           <p>Shinjuku, Tokyo</p>
         </div>
       </div>
@@ -633,7 +946,7 @@
       <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-share-alt"></i>
-          <h3>{{ t.contact_social_title }}</h3>
+          <h3>Profili Social</h3>
           <div class="social-links">
             <a href="https://twitter.com/hokuthom" target="_blank" class="twitter"><i class="icofont-twitter"></i></a>
             <a href="https://www.facebook.com/hokuthom" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
@@ -649,27 +962,24 @@
 
       <div class="form-row">
         <div class="col-md-6 form-group">
-          <input type="text" name="name" id="name" class="form-control" placeholder="{{ t.form_name_placeholder }}" data-rule="minlen:4" data-msg="{{ t.form_msg_minlen4 }}" />
+          <input type="text" name="name" id="name" class="form-control" placeholder="Il tuo nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
           <div class="validate"></div>
         </div>
         <div class="col-md-6 form-group">
-          <input type="email" class="form-control" name="email" id="email" placeholder="{{ t.form_email_placeholder }}" data-rule="email" data-msg="{{ t.form_msg_valid_email }}" />
+          <input type="email" class="form-control" name="email" id="email" placeholder="La tua email" data-rule="email" data-msg="Please enter a valid email" />
           <div class="validate"></div>
         </div>
       </div>
 
       <div class="form-group">
-        <input type="text" class="form-control" name="subject" id="subject" placeholder="{{ t.form_subject_placeholder }}" data-rule="minlen:4" data-msg="{{ t.form_msg_subject_minlen4 }}" />
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="Oggetto" data-rule="minlen:4" data-msg="Please enter a subject of at least 4 characters " />
         <div class="validate"></div>
       </div>
 
       <div class="form-group">
-        <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="{{ t.form_msg_write_something }}" placeholder="{{ t.form_message_placeholder }}"></textarea>
+        <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="Please write something" placeholder="Scrivi qualcosa qui"></textarea>
         <div class="validate"></div>
       </div>
-
-      <!-- Language hint for backend -->
-      <input type="hidden" name="lang" id="lang" value="{{ lang }}"/>
 
       <!-- Existing hidden field (kept as-is, but made robust with quotes) -->
       <div hidden="true">
@@ -692,11 +1002,11 @@
       </script>
 
       <div class="text-center">
-        <button type="submit" id="contact-form-button">{{ t.form_submit }}</button>
+        <button type="submit" id="contact-form-button">Invia Messaggio</button>
       </div>
 
       <div id="loading" hidden="true">
-        {{ t.form_sending }}
+        Sto inviando il messaggio...
       </div>
 
     </form>
@@ -705,6 +1015,10 @@
 </section><!-- End Contact Section -->
 
   <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
   </div>
 
@@ -723,6 +1037,8 @@
   <script src="../static/js/main.js"></script>
   <!-- jQuery validation is not included in the script above, so needs to be explicitly included -->
   <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+
 
   <script>
 
@@ -774,20 +1090,19 @@
     // Need to stop propagation on the section or even clicking outside the text collapse is triggered
     // But the text in the link readMore does not change
     $("#about").click(function(e) { e.stopPropagation(); });
-
     // Toggles expand/collapse in bio section
     function changeText() {
         var element = document.getElementById('readMore');
         //aria-expanded is the attribute that keeps track whether a section is expanded or not
         var isExpanded = $('#collapsedText').attr("aria-expanded");
-        if (element.innerHTML === '{{ t.read_more }}' && isExpanded==="false") {
+        if (element.innerHTML === 'THE LONG STORY...' && isExpanded==="false") {
             $('#collapsedText').collapse('show');
-            element.innerHTML = '{{ t.read_less }}';
+            element.innerHTML = 'READ LESS...';
 
         }
         else {
             $('#collapsedText').collapse('hide');
-            element.innerHTML = '{{ t.read_more }}';
+            element.innerHTML = 'THE LONG STORY...';
         }
 
       }
@@ -799,24 +1114,30 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title text-center">{{ t.conference_title }}</h4>
+                    <h4 class="modal-title text-center">Conference List</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                 </div>
                 <div class="modal-body">
                     <ul class="fa-ul">
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_1_title }}</i>, {{ t.conf_1_place }}, {{ t.conf_1_date }}</li>
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_2_title }}</i>, {{ t.conf_2_place }}, {{ t.conf_2_date }}</li>
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_3_title }}</i>, {{ t.conf_3_place }}, {{ t.conf_3_date }}</li>
-                        <li><i class="fa fa-li fa-trophy" aria-hidden="true"></i><i>{{ t.conf_4_title }}</i>, {{ t.conf_4_place }}, {{ t.conf_4_date }}</li>
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_5_title }}</i>, {{ t.conf_5_place }}, {{ t.conf_5_date }}</li>
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_6_title }}</i>, {{ t.conf_6_place }}, {{ t.conf_6_date }}</li>
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_7_title }}</i>, {{ t.conf_7_place }}, {{ t.conf_7_date }}</li>
-                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>{{ t.conf_8_title }}</i>, {{ t.conf_8_place }}, {{ t.conf_8_date }}</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>Joint seminar between young mathematicians and the industry</i>, Tokyo University, Tokyo, Japan,
+                                October 2014.</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>The 5th Japan-Taiwan workshop for young scholars in applied mathematics</i>, National Tsing Hua
+                                University, Hsinchu, Taiwan, February 2014.</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>Japanese-Hungarian Conference on applied mathematics and nonlinear dynamics</i>, Budapest University
+                                of Technology and Economics, Budapest, Hungary, December 2013.</li>
+                        <li><i class="fa fa-li fa-trophy" aria-hidden="true"></i><i>International conference on mathematical modeling and applications</i>, Meiji University, Tokyo, Japan,
+                                November 2013.</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>NIMS-KMRS PDE Conference on reaction-diffusion equations for ecology and related problems</i>, KAIST,
+                                Daejeon, South Korea, October 2013.</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>Models in Population Dynamics and Ecology</i>, Osnabruck, Germany,
+                                August 2013.</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>N2-days ReaDiLab workshop</i>, Meiji University, Tokyo, July 2013.</li>
+                        <li><i class="fa fa-li fa-comment" aria-hidden="true"></i><i>MIMS Mathematical biology seminars</i>, Meiji University, Tokyo, Japan, June 2013.</li>
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default text-center" data-dismiss="modal">{{ t.close }}</button>
+                    <button type="button" class="btn btn-default text-center" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -825,3 +1146,12 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
