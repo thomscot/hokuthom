@@ -1235,59 +1235,59 @@ section .container {
 
 @media (max-width: 991px) {
 
-  /* MENU MOBILE: minimale, alto a sinistra, non invasivo */
+  /* Top menu compatto, centrato, a larghezza contenuto */
   .nav-menu {
     position: fixed !important;
-    top: 6px !important;      /* ↑ ancora più in alto */
-    left: 8px !important;
+    top: env(safe-area-inset-top, 0px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     z-index: 2147483647 !important;
+    padding: 6px 0 !important;
   }
 
   .nav-menu ul {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
+    display: inline-flex !important;   /* 🔑 chiave */
+    flex-direction: row !important;
+    gap: 14px !important;
 
-    padding: 6px 8px !important;   /* ↓ box più piccolo */
+    padding: 8px 14px !important;
     margin: 0 !important;
 
-    background: rgba(0, 0, 0, 0.28) !important; /* più leggero */
-    border-radius: 8px !important;
+    width: fit-content !important;      /* 🔑 chiave */
+    max-width: 100% !important;
+
+    background: rgba(0, 0, 0, 0.28) !important;
+    border-radius: 999px !important;
   }
 
   .nav-menu li {
     margin: 0 !important;
-    padding: 0 !important;        /* niente indent */
+    padding: 0 !important;
+    flex: 0 0 auto !important;
   }
 
   .nav-menu li a {
-    display: block !important;
-    padding: 0 !important;        /* elimina rientri */
-    margin: 0 !important;
-
-    font-size: 13px !important;   /* ↓ testo più piccolo */
-    line-height: 1.3 !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
     font-weight: 500 !important;
 
-    color: rgba(255, 255, 255, 0.78) !important; /* bianco opaco */
+    color: rgba(255, 255, 255, 0.78) !important;
     white-space: nowrap !important;
   }
 
-  /* Stato attivo (Home) sobrio */
   .nav-menu .active > a {
     color: rgba(255, 255, 255, 0.95) !important;
   }
 
-  /* Disattiva hamburger e overlay */
+  /* Offset per anchor scroll */
+  section {
+    scroll-margin-top: 70px;
+  }
+
+  /* Disattiva hamburger */
   .mobile-nav-toggle,
   .mobile-nav,
   .mobile-nav-overly {
     display: none !important;
-  }
-
-  /* Neutralizza eventuali trasformazioni del template */
-  #header .nav-menu,
-  #header .nav-menu * {
-    transform: none !important;
   }
 }
