@@ -44,7 +44,7 @@ def get_translations(lang: str) -> dict:
     T = {
         "it": {
             "html_lang": "it",
-            "meta_description": "Scrittore, sviluppatore, e un mucchio di altre cose",
+            "meta_description": "Scrittore italiano in Giappone. Autore di romanzi ambientati nel Giappone contemporaneo. Una traiettoria non lineare tra ricerca scientifica, tecnologia e cultura.",
             "site_name": "Tommaso Scotti",
             "header_motto": "斗 Scrittore 武",
 
@@ -196,7 +196,7 @@ def get_translations(lang: str) -> dict:
 
         "en": {
             "html_lang": "en",
-            "meta_description": "Writer, developer, and a bunch of other things",
+            "meta_description": "Italian author based in Japan. Author of crime fiction set in contemporary Japan. A non-linear trajectory across scientific research, technology, and culture.",
             "site_name": "Tom Scotti",
             "header_motto": "斗 Author 武",
 
@@ -343,7 +343,7 @@ def get_translations(lang: str) -> dict:
 
         "jp": {
             "html_lang": "ja",
-            "meta_description": "作家／開発者、そして色々と。",
+            "meta_description": "日本在住のイタリア人作家。現代日本を舞台にした小説の著者。科学研究・テクノロジー・文化を横断する、直線ではない軌跡。",
             "site_name": "TOM (<ruby>斗武<rt>トム</rt></ruby>) SCOTTI",
             "header_motto": "作家",
             "nav_home": "ホーム",
