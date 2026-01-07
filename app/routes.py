@@ -352,7 +352,7 @@ def get_translations(lang: str) -> dict:
         "jp": {
             "html_lang": "ja",
             "meta_description": "日本在住のイタリア人作家。現代日本を舞台にした小説の著者。科学研究・テクノロジー・文化を横断する、直線ではない軌跡。",
-            "site_name": "TOM (<ruby>斗武<rt>トム</rt></ruby>) SCOTTI",
+            "site_name": "<ruby>Scotti<rt>スコッティ</rt></ruby> <ruby> Tommaso<rt>トマソ</rt></ruby> (<ruby>斗武<rt>トム</rt></ruby>)",
             "header_motto": "作家",
             "nav_home": "ホーム",
             "nav_about": "プロフィール",
@@ -414,7 +414,7 @@ def get_translations(lang: str) -> dict:
             "writing_subtitle": "書籍",
             "book1_desc": "表層はクライムフィクション、内側は現代日本の肖像。",
             "book2_desc": "『皇帝の傘』の続編：西田警部の二つ目の事件。",
-            "book3_desc": "日系アメリカ人捜査官・西田警部の三度目の冒険。",
+            "book3_desc": "西田警部の三度目の事件。",
             "book4_desc": "1968年「三億円事件」を題材にした小説。",
 
             "cultural_title": "文化活動",
