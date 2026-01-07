@@ -118,10 +118,10 @@ def get_translations(lang: str) -> dict:
 
             "writing_title": "Scrittura",
             "writing_subtitle": "I miei libri",
-            "book1_desc": "Una crime fiction all'esterno, un ritratto del Giappone moderno all'interno.",
-            "book2_desc": "Il seguito de L'ombrello dell'imperatore: seconda indagine per l'ispettore Nishida.",
-            "book3_desc": "Una terza avvetura per l'ispettore nippo-americano Takeshi James Nishida.",
-            "book4_desc": "Romanzo basato sul celebre furto dei 300 milioni di yen del 1968.",
+            "book1_desc": "Un uomo viene trovato morto a Kabukichō. L’arma del delitto è tanto banale quanto inusuale: un ombrello di plastica. Quando su di esso emerge un’impronta digitale insospettabile, però, l’ispettore mezzosangue Takeshi James Nishida si trova di fronte a un caso impossibile. Un noir che intreccia indagine e società giapponese contemporanea.",
+            "book2_desc": "Takaji Mihara, uomo d’affari in pensione, viene trovato morto nella propria casa. L’ispettore Nishida si trova a indagare su un omicidio che sembra sfidare ogni logica investigativa, in un noir che esplora le ombre nascoste delle vite ordinarie e dei segreti sociali giapponesi. ",
+            "book3_desc": "Al dipartimento di polizia di Tokyo c'è tensione. In un piccolo parco è stato rinvenuto il cadavere di un uomo con in tasca il biglietto da visita dell’ispettore Nishida. La ricerca della verità porta Nishida ad addentrarsi nelle strade di Tokyo e nei quartieri dove si muovono i bōsōzoku, le gang di motociclisti, e a confrontarsi con un mistero personale e sociale.",
+            "book4_desc": "Tokyo, 2018: un ex ispettore è chiamato a confrontarsi con il cinquantesimo anniversario di una delle indagini più celebri del Paese, il furto dei trecento milioni di yen del 1968. Tra passato e presente, il romanzo intreccia memoria, rimpianto e la tensione di un crimine senza vittime apparenti, offrendo un affresco profondo e umano del Giappone.",
 
             "cultural_title": "Attività culturali",
             "cultural_subtitle": "Scrittura, divulgazione e impegno culturale",
@@ -268,10 +268,10 @@ def get_translations(lang: str) -> dict:
 
             "writing_title": "Writing",
             "writing_subtitle": "My books",
-            "book1_desc": "A crime fiction on the surface, a portrait of modern Japan underneath.",
-            "book2_desc": "The sequel to The Emperor’s Umbrella: a second case for Inspector Nishida.",
-            "book3_desc": "A third adventure for the Japanese-American inspector Takeshi James Nishida.",
-            "book4_desc": "A novel based on the famous 1968 “300 million yen” heist.",
+            "book1_desc": "A man is found dead in Kabukichō. The murder weapon is as banal as it is unusual: a cheap plastic umbrella. When an unexpected fingerprint is discovered on it, Inspector Takeshi James Nishida—caught between two cultures—finds himself facing an impossible case. A noir that blends investigation with a sharp portrait of contemporary Japanese society.",
+            "book2_desc": "Takaji Mihara, a retired businessman, is found dead in his own home. Inspector Nishida is drawn into an investigation that defies conventional logic, in a noir that explores the hidden shadows of ordinary lives and the unspoken tensions of Japanese society.",
+            "book3_desc": "Tension rises within the Tokyo Metropolitan Police. The body of a man is found in a small park, carrying Inspector Nishida’s business card. As he searches for the truth, Nishida is led into the streets of western Tokyo and the world of the bōsōzoku—motorcycle gangs bound by violence and loyalty—where a personal and social mystery awaits.",
+            "book4_desc": "Tokyo, 2018. A former inspector is forced to confront the fiftieth anniversary of one of Japan’s most infamous unresolved cases: the 1968 three-hundred-million-yen heist. Moving between past and present, the novel weaves together memory, regret, and the tension of a crime without victims, offering a deeply human portrait of Japan.",
 
             "cultural_title": "Cultural activities",
             "cultural_subtitle": "Writing, cultural outreach, and engagement",
@@ -412,10 +412,10 @@ def get_translations(lang: str) -> dict:
 
             "writing_title": "著作",
             "writing_subtitle": "書籍",
-            "book1_desc": "表層はクライムフィクション、内側は現代日本の肖像。",
-            "book2_desc": "『皇帝の傘』の続編：西田警部の二つ目の事件。",
-            "book3_desc": "西田警部の三度目の事件。",
-            "book4_desc": "1968年「三億円事件」を題材にした小説。",
+            "book1_desc": "歌舞伎町で一人の男の遺体が発見される。凶器はあまりにもありふれた、一本のビニール傘。そこから想定外の指紋が検出されたとき、混血の警部・西田武は「ありえない事件」に直面する。捜査と現代日本社会を鋭く描き出すノワール。",
+            "book2_desc": "引退した実業家・見原氏が自宅で殺害されているのが見つかる。常識では説明できないこの事件を追う中で、西田警部は、ごく普通の人生の裏に潜む影と、日本社会に横たわる沈黙に向き合うことになる。",
+            "book3_desc": "警視庁に緊張が走る。都内の小さな公園で発見された遺体のポケットから、西田警部の名刺が見つかったのだ。真相を追ううちに、西田は東京西部の街と、暴走族と呼ばれる若者たちの世界へと踏み込んでいく。そこに待っていたのは、個人的であり社会的でもある謎だった。",
+            "book4_desc": "2018年の東京。元刑事の中村は、日本史上最も有名な未解決事件の一つ――1968年の三億円事件――から50年を迎え、再び過去と向き合うことになる。記憶と後悔、そして「被害者なき犯罪」が残した余韻を描く、静かで人間的な物語。",
 
             "cultural_title": "文化活動",
             "cultural_subtitle": "執筆・文化発信・文化的な取り組み",
