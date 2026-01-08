@@ -35,15 +35,32 @@ def inject_now():
     return {"now": datetime.utcnow()}
 
 
+from flask import request, redirect
+
 @app.before_request
 def before_request():
     """
-    Redirect to https if the environment is not dev
+    1) Canonical host (es. tomscotti.com -> www.tommasoscotti.com/en)
+    2) Force https (solo non-dev)
     """
-    if not request.is_secure and app.env != "development":
-        url = request.url.replace("http://", "https://", 1)
-        code = 301
-        return redirect(url, code=code)
+
+    # 1) Redirect dominio (host)
+    host = (request.host or "").lower()  # può includere :5000 in locale
+
+    # Se vuoi che tomscotti.com faccia landing su /en
+    if host.startswith("tomscotti.com"):
+        return redirect("https://www.tommasoscotti.com/en", code=301)
+
+    # (opzionale) canonizza anche tommasoscotti.com -> www.tommasoscotti.com
+    # if host.startswith("tommasoscotti.com") and not host.startswith("www."):
+    #     return redirect("https://www.tommasoscotti.com" + request.full_path, code=301)
+
+    # 2) Redirect a https (solo in prod)
+    if app.env != "development":
+        # Heroku spesso passa https via proxy: usa X-Forwarded-Proto se presente
+        proto = request.headers.get("X-Forwarded-Proto", request.scheme)
+        if proto != "https":
+            return redirect(request.url.replace("http://", "https://", 1), code=301)
 
 
 def get_translations(lang: str) -> dict:
