@@ -36,9 +36,7 @@ def inject_now():
 
 
 def lang_from_host(default="it") -> str:
-    host = (request.host or "").lower()
-    # copre tomscotti.com e www.tomscotti.com (ed eventuali porte in dev)
-    host = host.split(":")[0]
+    host = (request.host or "").lower().split(":")[0]
     if host in ("tomscotti.com", "www.tomscotti.com"):
         return "en"
     return default
@@ -46,24 +44,29 @@ def lang_from_host(default="it") -> str:
 @app.before_request
 def before_request():
     """
-    1) Canonical host (es. tomscotti.com -> www.tommasoscotti.com/en)
-    2) Force https (solo non-dev)
+    1) Canonical www
+    2) tomscotti landing: /  -> /en  (stays on su tomscotti.com)
+    3) Force https (only non-dev)
     """
 
-    # 1) Redirect dominio (host)
-    host = (request.host or "").lower()  # può includere :5000 in locale
+    host = (request.host or "").lower().split(":")[0]
+    path = request.path or "/"
+    full_path = request.full_path or path  # include querystring se presente
 
-    # Se vuoi che tomscotti.com faccia landing su /en
-    if host.startswith("tomscotti.com"):
-        return redirect("https://www.tommasoscotti.com/en", code=301)
+    # --- 1) Canonical www ---
+    if host == "tommasoscotti.com":
+        return redirect("https://www.tommasoscotti.com" + full_path, code=301)
 
-    # (opzionale) canonizza anche tommasoscotti.com -> www.tommasoscotti.com
-    # if host.startswith("tommasoscotti.com") and not host.startswith("www."):
-    #     return redirect("https://www.tommasoscotti.com" + request.full_path, code=301)
+    if host == "tomscotti.com":
+        return redirect("https://www.tomscotti.com" + full_path, code=301)
 
-    # 2) Redirect a https (solo in prod)
+    # --- 2) Landing EN on tomscotti only if you are on / (or /index) ---
+    # (so /jp stays /jp and doesn't force EN)
+    if host == "www.tomscotti.com" and path in ("/", "/index"):
+        return redirect("https://www.tomscotti.com/en", code=302)
+
+    # --- 3) Force HTTPS in prod ---
     if app.env != "development":
-        # Heroku spesso passa https via proxy: usa X-Forwarded-Proto se presente
         proto = request.headers.get("X-Forwarded-Proto", request.scheme)
         if proto != "https":
             return redirect(request.url.replace("http://", "https://", 1), code=301)
@@ -568,6 +571,10 @@ def index_en():
 @app.route("/jp", methods=["GET"])
 def index_jp():
     return render_index("jp")
+
+@app.route("/it", methods=["GET"])
+def index_it():
+    return render_index("it")
 
 
 
