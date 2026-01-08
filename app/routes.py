@@ -35,7 +35,13 @@ def inject_now():
     return {"now": datetime.utcnow()}
 
 
-from flask import request, redirect
+def lang_from_host(default="it") -> str:
+    host = (request.host or "").lower()
+    # copre tomscotti.com e www.tomscotti.com (ed eventuali porte in dev)
+    host = host.split(":")[0]
+    if host in ("tomscotti.com", "www.tomscotti.com"):
+        return "en"
+    return default
 
 @app.before_request
 def before_request():
@@ -551,7 +557,7 @@ def render_index(lang: str):
 @app.route("/")
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    return render_index("it")
+    return render_index(lang_from_host("it"))
 
 
 @app.route("/en", methods=["GET"])
