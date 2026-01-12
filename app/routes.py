@@ -386,7 +386,7 @@ def get_translations(lang: str) -> dict:
         "jp": {
             "html_lang": "ja",
             "meta_description": "日本在住のイタリア人作家。現代日本を舞台にした小説の著者。科学研究・テクノロジー・文化を横断する、直線ではない軌跡。",
-            "site_name": "<ruby>Scotti<rt>スコッティ</rt></ruby> <ruby> Tommaso<rt>トマソ</rt></ruby> (<ruby>斗武<rt>トム</rt></ruby>)",
+            "site_name": "スコッティ トマソ  (<ruby>斗武<rt>トム</rt></ruby>)", #"<ruby>Scotti<rt>スコッティ</rt></ruby> <ruby> Tommaso<rt>トマソ</rt></ruby> (<ruby>斗武<rt>トム</rt></ruby>)",
             "header_motto": "作家",
             "nav_home": "ホーム",
             "nav_about": "プロフィール",
