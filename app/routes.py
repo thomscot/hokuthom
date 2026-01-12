@@ -398,7 +398,7 @@ def get_translations(lang: str) -> dict:
 
             "about_info_title": "情報",
             "about_info_subtitle": "ひとことで言うと…",
-            "about_headline": "日本で暮らすイタリア人作家",
+            "about_headline": "日本在住のイタリア人作家",
             "about_tagline": "科学研究・テクノロジー・文化を横断する、直線ではない軌跡。",
             "label_birthdate": "生年月日：",
             "value_birthdate": "1984年3月12日",
@@ -407,11 +407,11 @@ def get_translations(lang: str) -> dict:
             "label_education": "学歴：",
             "value_education": "博士号（数学）",
 
-            "short_story_label": "ショートストーリー",
+            "short_story_label": "簡単な経歴",
             "short_story_paragraph": (
-                "ローマ生まれですが、2012年から日本で生活・仕事をしています。2015年に東京で応用数学の博士号を取得し、 "
+                "ローマ生まれですが、2012年から日本で生活・仕事をしています。2015年に東京の明治大学で応用数学の博士号を取得し、 "
                 "その後はフィンテックやアドテックの領域で働いてきました。執筆も続けており、2021年に初の小説 "
-                "<em>『皇帝の傘』</em>（Longanesi）を刊行しました。"
+                "<em>L'ombrello dell'imperatore(天皇の傘, Longanesi社)</em>を刊行しました。"
                 "幼い頃からピアノを弾き、1990年代後半から武道にも取り組んでいます。"
                 "余暇は書道、バイク、読書、プログラミング、写真…たぶん他にも色々あります。"
             ),
@@ -434,7 +434,7 @@ def get_translations(lang: str) -> dict:
                 "振り返ると、私の道のりは直線ではありませんが、一貫性のある軌跡でした。科学的な訓練から文化的な創作へ、そして2012年からの日本での生活と仕事という長い経験を通して、この国の文化コード、制度、社会の動きを“内側から”理解してきました。学術・職業・文化の経験が交差するこの土台は、イタリア文化の発信と、日伊の文化対話の強化に、責任と奉仕の精神をもって貢献するための確かな基盤になると考えています。"
             ),
 
-            "read_more": "ロングストーリー…",
+            "read_more": "詳しい経歴. . .",
             "read_less": "閉じる",
 
             "count_years_in_japan_label": "日本での年数",
